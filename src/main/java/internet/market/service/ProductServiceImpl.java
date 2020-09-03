@@ -32,7 +32,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product update(Product product) {
-        if(product.getId() == null){
+        if (product.getId() == null) {
             throw new IllegalArgumentException("Please indicate id of product you want to update");
         }
         get(product.getId());
