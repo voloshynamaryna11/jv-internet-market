@@ -1,14 +1,15 @@
 package internet.market.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCart {
-    Long id;
-    List<Product> products;
-    Long userId;
+    private Long id;
+    private List<Product> products;
+    private Long userId;
 
-    public ShoppingCart(List<Product> products, Long userId) {
-        this.products = products;
+    public ShoppingCart(Long userId) {
+        products = new ArrayList<>();
         this.userId = userId;
     }
 

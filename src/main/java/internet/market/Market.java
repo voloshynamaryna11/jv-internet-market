@@ -1,10 +1,11 @@
-package internet.market.service;
+package internet.market;
 
 import internet.market.lib.Injector;
 import internet.market.model.Product;
+import internet.market.service.ProductService;
 
 public class Market {
-    public static Injector injector = Injector.getInstance("internet.market");
+    private static Injector injector = Injector.getInstance("internet.market");
 
     public static void main(String[] args) {
         ProductService productService = (ProductService) injector.getInstance(ProductService.class);
@@ -15,9 +16,11 @@ public class Market {
         productService.create(acousticGuitar);
         productService.create(electricGuitar);
         Product sopranoUkulele = new Product("Soprano ukulele Parksons UK21C", 1500);
-        sopranoUkulele.setId(1L);
+        sopranoUkulele.setId(classicGuitar.getId());
         System.out.println(productService.get(1L).getName());
         productService.update(sopranoUkulele);
         System.out.println(productService.get(1L).getName());
+        productService.delete(classicGuitar.getId());
+        System.out.println(productService.get(classicGuitar.getId()));
     }
 }

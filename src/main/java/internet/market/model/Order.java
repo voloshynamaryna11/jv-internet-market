@@ -1,15 +1,16 @@
 package internet.market.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
-    Long id;
-    List<Product> products;
-    Long userId;
+    private Long id;
+    private List<Product> products;
+    private Long userId;
 
-    public Order(List<Product> products, Long userId) {
-        this.products = products;
+    public Order(Long userId) {
         this.userId = userId;
+        products = new ArrayList<>();
     }
 
     public Long getId() {

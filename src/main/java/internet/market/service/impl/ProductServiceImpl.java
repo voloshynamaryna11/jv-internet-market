@@ -1,9 +1,10 @@
-package internet.market.service;
+package internet.market.service.impl;
 
 import internet.market.dao.ProductDao;
 import internet.market.lib.Inject;
 import internet.market.lib.Service;
 import internet.market.model.Product;
+import internet.market.service.ProductService;
 import java.util.List;
 
 @Service
@@ -19,10 +20,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product get(Long id) {
-        if (productDao.get(id).isPresent()) {
-            return productDao.get(id).get();
-        }
-        throw new IllegalArgumentException("We don't have product with such id");
+        return productDao.get(id).get();
     }
 
     @Override
@@ -32,17 +30,11 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product update(Product product) {
-        if (product.getId() == null) {
-            throw new IllegalArgumentException("Please indicate id of product you want to update");
-        }
-        get(product.getId());
-        productDao.update(product);
-        return product;
+        return productDao.update(product);
     }
 
     @Override
     public boolean delete(Long id) {
-        get(id);
         return productDao.delete(id);
     }
 }

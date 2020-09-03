@@ -1,5 +1,6 @@
-package internet.market.dao;
+package internet.market.dao.impl;
 
+import internet.market.dao.ProductDao;
 import internet.market.db.Storage;
 import internet.market.lib.Dao;
 import internet.market.model.Product;
@@ -12,7 +13,7 @@ public class ProductDaoImpl implements ProductDao {
     @Override
     public Product create(Product product) {
         Storage.addProduct(product);
-        return new Product(product.getName(), product.getPrice());
+        return product;
     }
 
     @Override
@@ -29,23 +30,15 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public Product update(Product product) {
-        for (Product productUnit : Storage.products) {
-            if (productUnit.getId().equals(product.getId())) {
-                productUnit.setName(product.getName());
-                productUnit.setPrice(product.getPrice());
-            }
-        }
+        Storage.products.stream()
+                .filter(productUnit -> productUnit.getId().equals(product.getId()))
+                .forEach(productUnit -> Storage.products
+                        .set(Storage.products.indexOf(productUnit), product));
         return product;
     }
 
     @Override
     public boolean delete(Long id) {
-        for (Product product : Storage.products) {
-            if (product.getId().equals(id)) {
-                Storage.products.remove(product);
-                return true;
-            }
-        }
-        return false;
+        return Storage.products.removeIf(product -> product.getId().equals(id));
     }
 }
