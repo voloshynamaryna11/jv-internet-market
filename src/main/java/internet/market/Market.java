@@ -21,6 +21,6 @@ public class Market {
         productService.update(sopranoUkulele);
         System.out.println(productService.get(1L).getName());
         productService.delete(classicGuitar.getId());
-        System.out.println(productService.get(classicGuitar.getId()));
+        System.out.println(productService.getAll());
     }
 }
