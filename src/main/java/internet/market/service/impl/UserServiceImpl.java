@@ -38,7 +38,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean delete(Long id) {
-        shoppingCartService.delete(shoppingCartService.getByUserId(id));
         return userDao.delete(id);
     }
 }

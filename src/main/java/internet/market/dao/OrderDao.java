@@ -1,12 +1,11 @@
 package internet.market.dao;
 
 import internet.market.model.Order;
-import internet.market.model.ShoppingCart;
 import java.util.List;
 import java.util.Optional;
 
 public interface OrderDao {
-    Order createOrder(ShoppingCart shoppingCart);
+    Order createOrder(Order order);
 
     List<Order> getUserOrders(Long userId);
 
