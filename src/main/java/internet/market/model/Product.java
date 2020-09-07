@@ -42,4 +42,37 @@ public class Product {
                 + ", price=" + price
                 + '}';
     }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        if (id != null) {
+            result = prime * result + id.hashCode();
+        }
+        if (name != null) {
+            result = prime * result + name.hashCode();
+        }
+
+        return result * prime + (int) price;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (this == obj) {
+            return true;
+        }
+        if (obj.getClass().equals(Product.class)) {
+            Product product = (Product) obj;
+            return id != null ? id.equals(product.id)
+                    : product.id == null
+                    && name != null ? name.equalsIgnoreCase(product.name)
+                    : product.name == null
+                    && price == product.price;
+        }
+        return false;
+    }
 }
