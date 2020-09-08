@@ -4,7 +4,6 @@ import internet.market.dao.UserDao;
 import internet.market.lib.Inject;
 import internet.market.lib.Service;
 import internet.market.model.User;
-import internet.market.service.ShoppingCartService;
 import internet.market.service.UserService;
 import java.util.List;
 
@@ -12,9 +11,6 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Inject
     private UserDao userDao;
-
-    @Inject
-    private ShoppingCartService shoppingCartService;
 
     @Override
     public User create(User user) {
