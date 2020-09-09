@@ -1,4 +1,4 @@
-package internet.market.contollers;
+package internet.market.controllers;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
