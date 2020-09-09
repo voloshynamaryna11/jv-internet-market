@@ -6,6 +6,7 @@ import internet.market.lib.Dao;
 import internet.market.model.ShoppingCart;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.IntStream;
 
 @Dao
 public class ShoppingCartDaoImpl implements ShoppingCartDao {
@@ -30,6 +31,9 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
 
     @Override
     public ShoppingCart update(ShoppingCart item) {
+        IntStream.range(0, Storage.shoppingCarts.size())
+                .filter(i -> Storage.shoppingCarts.get(i).getId().equals(item.getId()))
+                .forEach(i -> Storage.shoppingCarts.set(i, item));
         return item;
     }
 
@@ -38,15 +42,15 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
         return Storage.shoppingCarts.removeIf(shoppingCart -> shoppingCart.getId().equals(id));
     }
 
+    public boolean delete(ShoppingCart shoppingCart) {
+        return Storage.shoppingCarts
+                .removeIf(shoppingCartUnit -> shoppingCartUnit.equals(shoppingCart));
+    }
+
     @Override
     public Optional<ShoppingCart> getByUserId(Long userId) {
         return Storage.shoppingCarts.stream()
                 .filter(shoppingCart -> shoppingCart.getUserId().equals(userId))
                 .findAny();
-    }
-
-    public boolean deleteByObject(ShoppingCart shoppingCart) {
-        return Storage.shoppingCarts
-                .removeIf(shoppingCartUnit -> shoppingCartUnit.equals(shoppingCart));
     }
 }
