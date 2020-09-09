@@ -10,6 +10,96 @@
 
     <servlet-mapping>
         <servlet-name>index</servlet-name>
-        <url-pattern>/index</url-pattern>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>registration</servlet-name>
+        <servlet-class>internet.market.controllers.RegistrationController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>registration</servlet-name>
+        <url-pattern>/user/registration</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>allUsers</servlet-name>
+        <servlet-class>internet.market.controllers.UserController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>allUsers</servlet-name>
+        <url-pattern>/user/all</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>injectUserData</servlet-name>
+        <servlet-class>internet.market.controllers.InjectUserDataController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>injectUserData</servlet-name>
+        <url-pattern>/user/injectUserData</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>addProduct</servlet-name>
+        <servlet-class>internet.market.controllers.AddProductController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>addProduct</servlet-name>
+        <url-pattern>/product/add</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>allProducts</servlet-name>
+        <servlet-class>internet.market.controllers.ProductController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>allProducts</servlet-name>
+        <url-pattern>/product/all</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>injectProductData</servlet-name>
+        <servlet-class>internet.market.controllers.InjectProductDataController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>injectProductData</servlet-name>
+        <url-pattern>/product/injectProductData</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>allProductsInCart</servlet-name>
+        <servlet-class>internet.market.controllers.ShoppingCartController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>allProductsInCart</servlet-name>
+        <url-pattern>/cart/all</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>deleteUser</servlet-name>
+        <servlet-class>internet.market.controllers.DeleteUserController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>deleteUser</servlet-name>
+        <url-pattern>/user/delete</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>addProductInCart</servlet-name>
+        <servlet-class>internet.market.controllers.AddProductInShoppingCartController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>addProductInCart</servlet-name>
+        <url-pattern>/cart/add</url-pattern>
     </servlet-mapping>
 </web-app>
