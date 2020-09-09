@@ -43,8 +43,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
     }
 
     public boolean delete(ShoppingCart shoppingCart) {
-        return Storage.shoppingCarts
-                .removeIf(shoppingCartUnit -> shoppingCartUnit.equals(shoppingCart));
+        return Storage.shoppingCarts.remove(shoppingCart);
     }
 
     @Override
