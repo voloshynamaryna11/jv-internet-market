@@ -6,6 +6,7 @@ import internet.market.lib.Service;
 import internet.market.model.Product;
 import internet.market.model.ShoppingCart;
 import internet.market.service.ShoppingCartService;
+import java.util.List;
 
 @Service
 public class ShoppingCartServiceImpl implements ShoppingCartService {
@@ -16,6 +17,21 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     @Override
     public ShoppingCart create(ShoppingCart shoppingCart) {
         return shoppingCartDao.create(shoppingCart);
+    }
+
+    @Override
+    public ShoppingCart get(Long id) {
+        return shoppingCartDao.get(id).get();
+    }
+
+    @Override
+    public List<ShoppingCart> getAll() {
+        return shoppingCartDao.getAll();
+    }
+
+    @Override
+    public ShoppingCart update(ShoppingCart item) {
+        return shoppingCartDao.update(item);
     }
 
     @Override
@@ -43,5 +59,10 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     @Override
     public boolean delete(ShoppingCart shoppingCart) {
         return shoppingCartDao.delete(shoppingCart);
+    }
+
+    @Override
+    public boolean delete(Long id) {
+        return shoppingCartDao.delete(id);
     }
 }

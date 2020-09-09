@@ -7,12 +7,13 @@ import internet.market.model.Order;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Dao
 public class OrderDaoImpl implements OrderDao {
 
     @Override
-    public Order createOrder(Order order) {
+    public Order create(Order order) {
         Storage.addOrder(order);
         return order;
     }
@@ -34,6 +35,14 @@ public class OrderDaoImpl implements OrderDao {
     @Override
     public List<Order> getAll() {
         return Storage.orders;
+    }
+
+    @Override
+    public Order update(Order item) {
+        IntStream.range(0, Storage.orders.size())
+                .filter(i -> Storage.orders.get(i).getId().equals(item.getId()))
+                .forEach(i -> Storage.orders.set(i, item));
+        return item;
     }
 
     @Override
