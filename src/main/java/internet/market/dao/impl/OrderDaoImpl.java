@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 public class OrderDaoImpl implements OrderDao {
 
     @Override
-    public Order createOrder(Order order) {
+    public Order create(Order order) {
         Storage.addOrder(order);
         return order;
     }
@@ -34,6 +34,11 @@ public class OrderDaoImpl implements OrderDao {
     @Override
     public List<Order> getAll() {
         return Storage.orders;
+    }
+
+    @Override
+    public Order update(Order item) {
+        return item;
     }
 
     @Override
