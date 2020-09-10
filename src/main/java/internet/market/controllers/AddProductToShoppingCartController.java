@@ -1,7 +1,6 @@
 package internet.market.controllers;
 
 import internet.market.lib.Injector;
-import internet.market.model.ShoppingCart;
 import internet.market.service.ProductService;
 import internet.market.service.ShoppingCartService;
 import java.io.IOException;
@@ -24,8 +23,8 @@ public class AddProductToShoppingCartController extends HttpServlet {
             throws ServletException, IOException {
         String productId = req.getParameter("id");
         Long id = Long.valueOf(productId);
-        ShoppingCart shoppingCart = shoppingCartService.create(new ShoppingCart(USER_ID));
-        shoppingCartService.addProduct(shoppingCart, productService.get(id));
+        shoppingCartService.addProduct(shoppingCartService
+                .getByUserId(USER_ID), productService.get(id));
         resp.sendRedirect(req.getContextPath() + "/product/all");
     }
 }

@@ -1,7 +1,9 @@
 package internet.market.controllers;
 
 import internet.market.lib.Injector;
+import internet.market.model.ShoppingCart;
 import internet.market.model.User;
+import internet.market.service.ShoppingCartService;
 import internet.market.service.UserService;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -12,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 public class RegistrationController extends HttpServlet {
     private static final Injector injector = Injector.getInstance("internet.market");
     private UserService userService = (UserService) injector.getInstance(UserService.class);
+    private ShoppingCartService shoppingCartService = (ShoppingCartService) injector
+            .getInstance(ShoppingCartService.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -30,6 +34,7 @@ public class RegistrationController extends HttpServlet {
         if (password.equals(passwordRepeat)) {
             User user = new User(name, login, password);
             userService.create(user);
+            shoppingCartService.create(new ShoppingCart(user.getId()));
             resp.sendRedirect(req.getContextPath() + "/");
         } else {
             req.setAttribute("message", "You entered different passwords");
