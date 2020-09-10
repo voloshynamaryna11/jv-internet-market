@@ -26,13 +26,8 @@ public class AddProductController extends HttpServlet {
             throws ServletException, IOException {
         String productName = req.getParameter("name");
         String productPrice = req.getParameter("price");
-        if (productName.length() > 0 && productPrice.length() > 0) {
-            Product product = new Product(productName, Long.parseLong(productPrice));
-            productService.create(product);
-            resp.sendRedirect(req.getContextPath() + "/");
-        } else {
-            req.setAttribute("message", "You entered wrong name or price");
-            req.getRequestDispatcher("/WEB-INF/views/addProduct.jsp").forward(req, resp);
-        }
+        Product product = new Product(productName, Long.parseLong(productPrice));
+        productService.create(product);
+        resp.sendRedirect(req.getContextPath() + "/");
     }
 }

@@ -34,16 +34,6 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>injectUserData</servlet-name>
-        <servlet-class>internet.market.controllers.InjectUserDataController</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>injectUserData</servlet-name>
-        <url-pattern>/user/injectUserData</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
         <servlet-name>addProduct</servlet-name>
         <servlet-class>internet.market.controllers.AddProductController</servlet-class>
     </servlet>
@@ -55,7 +45,7 @@
 
     <servlet>
         <servlet-name>allProducts</servlet-name>
-        <servlet-class>internet.market.controllers.ProductController</servlet-class>
+        <servlet-class>internet.market.controllers.GetAllProductsController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -64,18 +54,18 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>injectProductData</servlet-name>
-        <servlet-class>internet.market.controllers.InjectProductDataController</servlet-class>
+        <servlet-name>injectData</servlet-name>
+        <servlet-class>internet.market.controllers.InjectDataController</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>injectProductData</servlet-name>
-        <url-pattern>/product/injectProductData</url-pattern>
+        <servlet-name>injectData</servlet-name>
+        <url-pattern>/injectData</url-pattern>
     </servlet-mapping>
 
     <servlet>
         <servlet-name>allProductsInCart</servlet-name>
-        <servlet-class>internet.market.controllers.ShoppingCartController</servlet-class>
+        <servlet-class>internet.market.controllers.GetShoppingCartProductsController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -95,7 +85,7 @@
 
     <servlet>
         <servlet-name>addProductInCart</servlet-name>
-        <servlet-class>internet.market.controllers.AddProductInShoppingCartController</servlet-class>
+        <servlet-class>internet.market.controllers.AddProductToShoppingCartController</servlet-class>
     </servlet>
 
     <servlet-mapping>
