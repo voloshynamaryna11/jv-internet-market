@@ -10,6 +10,86 @@
 
     <servlet-mapping>
         <servlet-name>index</servlet-name>
-        <url-pattern>/index</url-pattern>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>registration</servlet-name>
+        <servlet-class>internet.market.controllers.RegistrationController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>registration</servlet-name>
+        <url-pattern>/user/registration</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>allUsers</servlet-name>
+        <servlet-class>internet.market.controllers.UserController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>allUsers</servlet-name>
+        <url-pattern>/user/all</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>addProduct</servlet-name>
+        <servlet-class>internet.market.controllers.AddProductController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>addProduct</servlet-name>
+        <url-pattern>/product/add</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>allProducts</servlet-name>
+        <servlet-class>internet.market.controllers.GetAllProductsController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>allProducts</servlet-name>
+        <url-pattern>/product/all</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>injectData</servlet-name>
+        <servlet-class>internet.market.controllers.InjectDataController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>injectData</servlet-name>
+        <url-pattern>/injectData</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>allProductsInCart</servlet-name>
+        <servlet-class>internet.market.controllers.GetShoppingCartProductsController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>allProductsInCart</servlet-name>
+        <url-pattern>/cart/product/all</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>deleteUser</servlet-name>
+        <servlet-class>internet.market.controllers.DeleteUserController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>deleteUser</servlet-name>
+        <url-pattern>/user/delete</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>addProductInCart</servlet-name>
+        <servlet-class>internet.market.controllers.AddProductToShoppingCartController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>addProductInCart</servlet-name>
+        <url-pattern>/cart/product/add</url-pattern>
     </servlet-mapping>
 </web-app>
