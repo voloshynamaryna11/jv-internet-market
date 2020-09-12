@@ -7,10 +7,19 @@ public class Order {
     private Long id;
     private List<Product> products;
     private Long userId;
+    private double sum;
 
     public Order(Long userId) {
         this.userId = userId;
         products = new ArrayList<>();
+    }
+
+    public double getSum() {
+        return sum;
+    }
+
+    public void setSum(double sum) {
+        this.sum = sum;
     }
 
     public Long getId() {

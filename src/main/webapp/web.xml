@@ -92,4 +92,84 @@
         <servlet-name>addProductInCart</servlet-name>
         <url-pattern>/cart/product/add</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>placeAnOrder</servlet-name>
+        <servlet-class>internet.market.controllers.PlaceAnOrderController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>placeAnOrder</servlet-name>
+        <url-pattern>/cart/placeAnOrder</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>deleteProductFromCart</servlet-name>
+        <servlet-class>internet.market.controllers.DeleteProductFromCartController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>deleteProductFromCart</servlet-name>
+        <url-pattern>/cart/product/delete</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>showUserOrders</servlet-name>
+        <servlet-class>internet.market.controllers.GetAllOrdersOfUserController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>showUserOrders</servlet-name>
+        <url-pattern>/order/user/all</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>showOrderDetails</servlet-name>
+        <servlet-class>internet.market.controllers.GetOrderDetailsController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>showOrderDetails</servlet-name>
+        <url-pattern>/order/details</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>showAllOrders</servlet-name>
+        <servlet-class>internet.market.controllers.GetAllOrdersController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>showAllOrders</servlet-name>
+        <url-pattern>/admin/order/all</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>deleteOrder</servlet-name>
+        <servlet-class>internet.market.controllers.DeleteOrderController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>deleteOrder</servlet-name>
+        <url-pattern>/admin/order/delete</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>deleteProduct</servlet-name>
+        <servlet-class>internet.market.controllers.DeleteProductAdmin</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>deleteProduct</servlet-name>
+        <url-pattern>/admin/product/delete</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>allProductsAdmin</servlet-name>
+        <servlet-class>internet.market.controllers.GetAllProductsAdmin</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>allProductsAdmin</servlet-name>
+        <url-pattern>/admin/product/all</url-pattern>
+    </servlet-mapping>
 </web-app>
