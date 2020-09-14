@@ -2,33 +2,27 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>All products in cart</title>
+    <title>Order details</title>
 </head>
 <body>
-<h1>All products in cart page</h1>
+<h1>Order details</h1>
 <table border="1">
     <tr>
-        <th>ID</th>
-        <th>Name</th>
+        <th>Product</th>
         <th>Price</th>
     </tr>
     <c:forEach var="product" items="${products}">
         <tr>
-            <td>
-                <c:out value="${product.id}"/>
-            </td>
             <td>
                 <c:out value="${product.name}"/>
             </td>
             <td>
                 <c:out value="${product.price}"/>
             </td>
-            <td>
-                <a href="${pageContext.request.contextPath}/cart/products/delete?id=${product.id}">Delete</a>
-            </td>
         </tr>
     </c:forEach>
 </table>
-<a href="${pageContext.request.contextPath}/orders/complete">Place an Order</a>
+<h4>Sum: ${sum}</h4>
+<a href="${pageContext.request.contextPath}">Back to the main page</a>
 </body>
 </html>
