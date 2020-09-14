@@ -3,7 +3,6 @@ package internet.market.controllers;
 import internet.market.lib.Injector;
 import internet.market.model.Product;
 import internet.market.service.OrderService;
-import internet.market.service.ProductService;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -15,8 +14,6 @@ public class GetOrderDetailsController extends HttpServlet {
     private static final Injector injector = Injector.getInstance("internet.market");
     private OrderService orderService = (OrderService) injector
             .getInstance(OrderService.class);
-    private ProductService productService = (ProductService) injector
-            .getInstance(ProductService.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
