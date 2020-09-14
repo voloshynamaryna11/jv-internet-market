@@ -155,7 +155,7 @@
 
     <servlet>
         <servlet-name>deleteProduct</servlet-name>
-        <servlet-class>internet.market.controllers.DeleteProductAdmin</servlet-class>
+        <servlet-class>internet.market.controllers.DeleteProductAdminController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -165,7 +165,7 @@
 
     <servlet>
         <servlet-name>allProductsAdmin</servlet-name>
-        <servlet-class>internet.market.controllers.GetAllProductsAdmin</servlet-class>
+        <servlet-class>internet.market.controllers.GetAllProductsAdminController</servlet-class>
     </servlet>
 
     <servlet-mapping>

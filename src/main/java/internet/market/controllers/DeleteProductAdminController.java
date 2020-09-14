@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class DeleteProductAdmin extends HttpServlet {
+public class DeleteProductAdminController extends HttpServlet {
     private static final Injector injector = Injector.getInstance("internet.market");
     private ProductService productService = (ProductService) injector
             .getInstance(ProductService.class);
