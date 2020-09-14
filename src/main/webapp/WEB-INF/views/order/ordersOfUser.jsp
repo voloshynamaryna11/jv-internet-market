@@ -9,15 +9,11 @@
 <table border="1">
     <tr>
         <th>ID</th>
-        <th>Sum</th>
     </tr>
     <c:forEach var="order" items="${orders}">
         <tr>
             <td>
                 <c:out value="${order.id}"/>
-            </td>
-            <td>
-                <c:out value="${order.sum}"/>
             </td>
             <td>
                 <a href="${pageContext.request.contextPath}/order/details?id=${order.id}">Details</a>

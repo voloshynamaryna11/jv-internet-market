@@ -24,7 +24,11 @@ public class GetOrderDetailsController extends HttpServlet {
         String orderId = req.getParameter("id");
         Long id = Long.valueOf(orderId);
         List<Product> products = orderService.get(id).getProducts();
+        double sum = products.stream()
+                .mapToDouble(Product::getPrice)
+                .sum();
         req.setAttribute("products", products);
+        req.setAttribute("sum", sum);
         req.getRequestDispatcher("/WEB-INF/views/order/orderDetails.jsp").forward(req, resp);
     }
 }

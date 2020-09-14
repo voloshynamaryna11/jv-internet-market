@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class DeleteProductAdminController extends HttpServlet {
+public class DeleteProductController extends HttpServlet {
     private static final Injector injector = Injector.getInstance("internet.market");
     private ProductService productService = (ProductService) injector
             .getInstance(ProductService.class);
@@ -19,6 +19,6 @@ public class DeleteProductAdminController extends HttpServlet {
         String productId = req.getParameter("id");
         Long id = Long.valueOf(productId);
         productService.delete(id);
-        resp.sendRedirect(req.getContextPath() + "/admin/product/all");
+        resp.sendRedirect(req.getContextPath() + "/admin/products");
     }
 }

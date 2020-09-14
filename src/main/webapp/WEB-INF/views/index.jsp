@@ -12,8 +12,8 @@
         <a href="${pageContext.request.contextPath}/product/all">See all products</a>
 
         <h3>Special opportunities(only for admin)</h3>
-        <a href="${pageContext.request.contextPath}/admin/order/all">All orders</a>
-        <a href="${pageContext.request.contextPath}/admin/product/all">All products</a>
+        <a href="${pageContext.request.contextPath}/admin/orders">All orders</a>
+        <a href="${pageContext.request.contextPath}/admin/products">All products</a>
         <a href="${pageContext.request.contextPath}/user/all">All users</a>
         </body>
         </html>

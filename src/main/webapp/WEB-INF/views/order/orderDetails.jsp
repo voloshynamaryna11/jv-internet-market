@@ -22,6 +22,7 @@
         </tr>
     </c:forEach>
 </table>
+<h4>Sum: ${sum}</h4>
 <a href="${pageContext.request.contextPath}">Back to the main page</a>
 </body>
 </html>
