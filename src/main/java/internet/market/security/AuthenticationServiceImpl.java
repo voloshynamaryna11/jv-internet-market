@@ -9,13 +9,13 @@ import internet.market.service.UserService;
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
     @Inject
-    UserService userService;
+    private UserService userService;
 
     @Override
     public User login(String login, String password) throws AuthenticationException {
         User user = userService.findByLogin(login)
                 .orElseThrow(() ->
-                        new AuthenticationException("Register first or enter correct login"));
+                        new AuthenticationException("Wrong password or login"));
         if (user.getPassword().equals(password)) {
             return user;
         }
