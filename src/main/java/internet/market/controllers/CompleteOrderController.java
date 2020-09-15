@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class CompleteOrderController extends HttpServlet {
-    private static final Long USER_ID = 1L;
+    private static final String USER_ID = "user_Id";
     private static final Injector injector = Injector.getInstance("internet.market");
     private ShoppingCartService shoppingCartService = (ShoppingCartService) injector
             .getInstance(ShoppingCartService.class);
@@ -20,7 +20,8 @@ public class CompleteOrderController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        orderService.completeOrder(shoppingCartService.getByUserId(USER_ID));
+        orderService.completeOrder(shoppingCartService
+                .getByUserId((Long) req.getSession().getAttribute(USER_ID)));
         resp.sendRedirect(req.getContextPath() + "/user/orders");
     }
 }

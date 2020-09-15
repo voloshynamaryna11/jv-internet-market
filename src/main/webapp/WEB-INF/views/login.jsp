@@ -14,5 +14,6 @@
 
     <button type="submit">Log in!</button>
 </form>
+<a href="${pageContext.request.contextPath}/user/registration">Registration</a>
 </body>
 </html>
