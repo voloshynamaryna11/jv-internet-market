@@ -1,11 +1,13 @@
 package internet.market.controllers;
 
 import internet.market.lib.Injector;
+import internet.market.model.Role;
 import internet.market.model.ShoppingCart;
 import internet.market.model.User;
 import internet.market.service.ShoppingCartService;
 import internet.market.service.UserService;
 import java.io.IOException;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,6 +35,7 @@ public class RegistrationController extends HttpServlet {
         String passwordRepeat = req.getParameter("password-repeat");
         if (password.equals(passwordRepeat)) {
             User user = new User(name, login, password);
+            user.setRoles(Set.of(Role.of("USER")));
             userService.create(user);
             shoppingCartService.create(new ShoppingCart(user.getId()));
             resp.sendRedirect(req.getContextPath() + "/user/login");

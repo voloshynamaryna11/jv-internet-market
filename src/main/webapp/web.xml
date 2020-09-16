@@ -183,12 +183,31 @@
         <url-pattern>/user/login</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>logoutUser</servlet-name>
+        <servlet-class>internet.market.controllers.LogoutController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>logoutUser</servlet-name>
+        <url-pattern>/user/logout</url-pattern>
+    </servlet-mapping>
+
     <filter>
         <filter-name>authenticationFilter</filter-name>
         <filter-class>internet.market.web.filters.AuthenticationFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>authenticationFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>authorizationFilter</filter-name>
+        <filter-class>internet.market.web.filters.AuthorizationFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>authorizationFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 </web-app>
