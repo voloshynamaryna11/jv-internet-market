@@ -2,12 +2,14 @@ package internet.market.controllers;
 
 import internet.market.lib.Injector;
 import internet.market.model.Product;
+import internet.market.model.Role;
 import internet.market.model.ShoppingCart;
 import internet.market.model.User;
 import internet.market.service.ProductService;
 import internet.market.service.ShoppingCartService;
 import internet.market.service.UserService;
 import java.io.IOException;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,9 +32,14 @@ public class InjectDataController extends HttpServlet {
         productService.create(acousticGuitar);
         User user1 = new User("Monica Geller", "turkey222", "678gkjx");
         User user2 = new User("Ross Geller", "newyork200", "47871982735");
+        User user3 = new User("Admin", "admin", "1");
         userService.create(user1);
-        shoppingCartService.create(new ShoppingCart(user1.getId()));
         userService.create(user2);
+        userService.create(user3);
+        user1.setRoles(Set.of(Role.of("USER")));
+        user1.setRoles(Set.of(Role.of("USER")));
+        user3.setRoles(Set.of(Role.of("ADMIN")));
+        shoppingCartService.create(new ShoppingCart(user1.getId()));
         shoppingCartService.create(new ShoppingCart(user2.getId()));
         req.getRequestDispatcher("/WEB-INF/views/injectData.jsp").forward(req, resp);
     }
