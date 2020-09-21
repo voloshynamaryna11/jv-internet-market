@@ -30,7 +30,7 @@ public class ProductDaoJdbcImpl implements ProductDao {
             }
             return item;
         } catch (SQLException e) {
-            throw new DataProcessingException("We can`t add product with id = " + item.getId(), e);
+            throw new DataProcessingException("Can`t add product with id = " + item.getId(), e);
         }
     }
 
@@ -76,7 +76,7 @@ public class ProductDaoJdbcImpl implements ProductDao {
             statement.setLong(3, item.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
-            throw new DataProcessingException("Can`t add product with id = " + item.getId(), e);
+            throw new DataProcessingException("Can`t update product with id = " + item.getId(), e);
         }
         return item;
     }
@@ -89,7 +89,7 @@ public class ProductDaoJdbcImpl implements ProductDao {
             statement.setLong(1, id);
             return statement.executeUpdate() > 0;
         } catch (SQLException e) {
-            throw new DataProcessingException("We can`t delete product with id = " + id, e);
+            throw new DataProcessingException("Can`t delete product with id = " + id, e);
         }
     }
 
