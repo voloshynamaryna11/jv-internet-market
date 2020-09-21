@@ -1,17 +1,16 @@
 package internet.market.dao;
 
-import internet.market.exceptions.DataProcessingException;
 import java.util.List;
 import java.util.Optional;
 
 public interface GenericDao<T, K> {
-    T create(T item) throws DataProcessingException;
+    T create(T item);
 
-    Optional<T> get(K id) throws DataProcessingException;
+    Optional<T> get(K id);
 
-    List<T> getAll() throws DataProcessingException;
+    List<T> getAll();
 
-    T update(T item) throws DataProcessingException;
+    T update(T item);
 
-    boolean delete(K id) throws DataProcessingException;
+    boolean delete(K id);
 }
