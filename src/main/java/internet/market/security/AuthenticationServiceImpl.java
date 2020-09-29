@@ -5,6 +5,7 @@ import internet.market.lib.Inject;
 import internet.market.lib.Service;
 import internet.market.model.User;
 import internet.market.service.UserService;
+import internet.market.util.HashUtil;
 
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
@@ -16,7 +17,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         User user = userService.findByLogin(login)
                 .orElseThrow(() ->
                         new AuthenticationException("Wrong password or login"));
-        if (user.getPassword().equals(password)) {
+        if (user.getPassword().equals(HashUtil.hashPassword(password, user.getSalt()))) {
             return user;
         }
         throw new AuthenticationException("Wrong password or login");
