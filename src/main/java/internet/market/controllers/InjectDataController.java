@@ -31,16 +31,12 @@ public class InjectDataController extends HttpServlet {
         productService.create(classicGuitar);
         productService.create(acousticGuitar);
         User user1 = new User("Monica Geller", "turkey222", "678gkjx");
-        User user2 = new User("Ross Geller", "newyork200", "47871982735");
-        User user3 = new User("Admin", "admin", "1");
+        user1.setRoles(Set.of(Role.of("USER")));
         userService.create(user1);
-        userService.create(user2);
-        userService.create(user3);
-        user1.setRoles(Set.of(Role.of("USER")));
-        user1.setRoles(Set.of(Role.of("USER")));
-        user3.setRoles(Set.of(Role.of("ADMIN")));
         shoppingCartService.create(new ShoppingCart(user1.getId()));
-        shoppingCartService.create(new ShoppingCart(user2.getId()));
+        User user3 = new User("Admin", "admin", "1");
+        user3.setRoles(Set.of(Role.of("ADMIN")));
+        userService.create(user3);
         req.getRequestDispatcher("/WEB-INF/views/injectData.jsp").forward(req, resp);
     }
 }
