@@ -55,7 +55,7 @@ public class UserDaoJdbcImpl implements UserDao {
                 item.setId(resultSet.getLong(1));
             }
         } catch (SQLException e) {
-            throw new DataProcessingException("Can't add user with id = " + item.getId(), e);
+            throw new DataProcessingException("Can't add user", e);
         }
         setRoles(item);
         return item;

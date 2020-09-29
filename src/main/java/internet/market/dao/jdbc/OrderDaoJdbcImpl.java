@@ -51,7 +51,7 @@ public class OrderDaoJdbcImpl implements OrderDao {
                 item.setId(resultSet.getLong(1));
             }
         } catch (SQLException e) {
-            throw new DataProcessingException("Can`t add order with id =  " + item.getId(), e);
+            throw new DataProcessingException("Can`t add order", e);
         }
         addProductsToOrder(item.getProducts(), item.getId());
         return item;
@@ -67,8 +67,6 @@ public class OrderDaoJdbcImpl implements OrderDao {
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 order = getOrderInformationFromDataBase(resultSet);
-                order.setProducts(getProductsOfOrder(id));
-                return Optional.of(order);
             }
         } catch (SQLException e) {
             throw new DataProcessingException("Can`t find order with id = "
@@ -109,12 +107,11 @@ public class OrderDaoJdbcImpl implements OrderDao {
             statement.setLong(1, item.getUserId());
             statement.setLong(2, item.getId());
             statement.executeUpdate();
-            List<Product> allProducts = getProductsOfOrder(item.getId());
-            deleteProductsFromOrder(item.getId());
-            addProductsToOrder(allProducts, item.getId());
         } catch (SQLException e) {
             throw new DataProcessingException("Can't update order with id = " + item.getId(), e);
         }
+        deleteProductsFromOrder(item.getId());
+        addProductsToOrder(item.getProducts(), item.getId());
         return item;
     }
 

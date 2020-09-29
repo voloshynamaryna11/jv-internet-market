@@ -69,8 +69,7 @@ public class ShoppingCartDaoJdbcImpl implements ShoppingCartDao {
                 item.setId(resultSet.getLong(1));
             }
         } catch (SQLException e) {
-            throw new DataProcessingException("Can't add shopping cart with id = "
-                    + item.getId(), e);
+            throw new DataProcessingException("Can't add shopping cart", e);
         }
         addProductsToShoppingCart(item.getProducts(), item.getId());
         return item;
@@ -125,13 +124,12 @@ public class ShoppingCartDaoJdbcImpl implements ShoppingCartDao {
             statement.setLong(1, item.getUserId());
             statement.setLong(2, item.getId());
             statement.executeUpdate();
-            List<Product> allProducts = getProductsFromCart(item.getId());
-            deleteProductsFromCart(item.getId());
-            addProductsToShoppingCart(allProducts, item.getId());
         } catch (SQLException e) {
             throw new DataProcessingException("Can't update shoppingCart with id = "
                     + item.getId(), e);
         }
+        deleteProductsFromCart(item.getId());
+        addProductsToShoppingCart(item.getProducts(), item.getId());
         return item;
     }
 
