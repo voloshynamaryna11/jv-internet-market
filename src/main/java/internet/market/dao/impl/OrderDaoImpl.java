@@ -2,14 +2,12 @@ package internet.market.dao.impl;
 
 import internet.market.dao.OrderDao;
 import internet.market.db.Storage;
-import internet.market.lib.Dao;
 import internet.market.model.Order;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-@Dao
 public class OrderDaoImpl implements OrderDao {
 
     @Override

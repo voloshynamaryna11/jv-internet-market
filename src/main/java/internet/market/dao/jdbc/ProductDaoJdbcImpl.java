@@ -2,6 +2,7 @@ package internet.market.dao.jdbc;
 
 import internet.market.dao.ProductDao;
 import internet.market.exceptions.DataProcessingException;
+import internet.market.lib.Dao;
 import internet.market.model.Product;
 import internet.market.util.ConnectionUtil;
 import java.sql.Connection;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Dao
 public class ProductDaoJdbcImpl implements ProductDao {
 
     @Override
@@ -93,7 +95,7 @@ public class ProductDaoJdbcImpl implements ProductDao {
         }
     }
 
-    private static Product getProductInformationFromDataBase(ResultSet resultSet)
+    private Product getProductInformationFromDataBase(ResultSet resultSet)
             throws SQLException {
         Long productId = resultSet.getLong("product_id");
         String productName = resultSet.getString("name");

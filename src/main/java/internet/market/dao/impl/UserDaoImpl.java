@@ -2,13 +2,11 @@ package internet.market.dao.impl;
 
 import internet.market.dao.UserDao;
 import internet.market.db.Storage;
-import internet.market.lib.Dao;
 import internet.market.model.User;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
-@Dao
 public class UserDaoImpl implements UserDao {
     @Override
     public User create(User user) {
