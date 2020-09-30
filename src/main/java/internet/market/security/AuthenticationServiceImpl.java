@@ -6,6 +6,7 @@ import internet.market.lib.Service;
 import internet.market.model.User;
 import internet.market.service.UserService;
 import internet.market.util.HashUtil;
+import java.util.Optional;
 
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
@@ -14,11 +15,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public User login(String login, String password) throws AuthenticationException {
-        User user = userService.findByLogin(login)
-                .orElseThrow(() ->
-                        new AuthenticationException("Wrong password or login"));
-        if (user.getPassword().equals(HashUtil.hashPassword(password, user.getSalt()))) {
-            return user;
+        Optional<User> user = userService.findByLogin(login);
+        if (user.isPresent() && user.get().getPassword()
+                .equals(HashUtil.hashPassword(password, user.get().getSalt()))) {
+            return user.get();
         }
         throw new AuthenticationException("Wrong password or login");
     }
