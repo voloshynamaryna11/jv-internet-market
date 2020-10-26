@@ -8,18 +8,18 @@ jstl and java.security.
  
 ***2. Project structure:***
 -----------------------------------
--all sources are in the "internet.market" package
--all controllers are responsible for handling requests are in the package "controllers"
--the "dao" package contains the classes responsible for the implementation of interaction with the database and interfaces that describe their work
--all custom exceptions needed to identify the application failure are in the "exceptions" package
--the "lib" package contains the injector implementation and its own annotations
--the "model" package is responsible for recreating and describing entities whose data is stored in the database
--the "security" package contains authentication implementation
--the "service" package contains the main business logic of the application including classes with implementation of the main methods and interfaces that describe classes' work
--the "util" package contains two classes responsible for connecting to the database "ConnectionUtil" and for hashing users' passwords "HashUtil"
--the "web.filters" package include implementation of filters for authentication and authorization
--the "resources" folder contains sql.file for the initial creating of tables in the database 
--the "webapp" folder contains jsp.files and configuration file "web.xml"
+*all sources are in the "internet.market" package
+*all controllers are responsible for handling requests are in the package "controllers"
+*the "dao" package contains the classes responsible for the implementation of interaction with the database and interfaces that describe their work
+*all custom exceptions needed to identify the application failure are in the "exceptions" package
+*the "lib" package contains the injector implementation and its own annotations
+*the "model" package is responsible for recreating and describing entities whose data is stored in the database
+*the "security" package contains authentication implementation
+*the "service" package contains the main business logic of the application including classes with implementation of the main methods and interfaces that describe classes' work
+*the "util" package contains two classes responsible for connecting to the database "ConnectionUtil" and for hashing users' passwords "HashUtil"
+*the "web.filters" package include implementation of filters for authentication and authorization
+*the "resources" folder contains sql.file for the initial creating of tables in the database 
+*the "webapp" folder contains jsp.files and configuration file "web.xml"
 
 ***3. Implementation details:***
 -----------------------------------
@@ -33,21 +33,21 @@ to display dynamic data in it.
 
 ***4. Launch guide:***
 -----------------------------------
--Clone this project 
--Install and configure apache Tomcat and MySQL(or another rdbms) 
--Fix the information about connection to database in "util" package "ConnectionUtil" class(user, password and driver if you use another database)
--Run code in init_db.sql to create the needed tables and schema 
+*Clone this project 
+*Install and configure apache Tomcat and MySQL(or another rdbms) 
+*Fix the information about connection to database in "util" package "ConnectionUtil" class(user, password and driver if you use another database)
+*Run code in init_db.sql to create the needed tables and schema 
 
 ***5. Functionality:***
 -----------------------------------
 general capabilities:
--registration ("/user/registration")
--adding new product to the product-list ("/product/add")
--watching all products' plethora("/product/all")
--injecting start data to the db ("/injectData")
--logout from the system ("/user/logout")
--login ("/user/login")
--watching the details of selected order ("/order/details")
+*registration ("/user/registration")
+*adding new product to the product-list ("/product/add")
+*watching all products' plethora("/product/all")
+*injecting start data to the db ("/injectData")
+*logout from the system ("/user/logout")
+*login ("/user/login")
+*watching the details of selected order ("/order/details")
 
 user capabilities:
 -watching the list of his selected products ("/cart/product/all") 
