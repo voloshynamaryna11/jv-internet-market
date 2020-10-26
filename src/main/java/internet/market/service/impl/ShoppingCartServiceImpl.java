@@ -36,19 +36,30 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Override
     public ShoppingCart addProduct(ShoppingCart shoppingCart, Product product) {
-        shoppingCartDao.getByUserId(shoppingCart.getUserId()).get().getProducts().add(product);
-        return shoppingCart;
+        List<Product> list = shoppingCartDao.getByUserId(shoppingCart.getUserId())
+                .get().getProducts();
+        list.add(product);
+        shoppingCart.setProducts(list);
+        return shoppingCartDao.update(shoppingCart);
     }
 
     @Override
     public boolean deleteProduct(ShoppingCart shoppingCart, Product product) {
-        return shoppingCartDao.getByUserId(shoppingCart.getUserId())
-                .get().getProducts().remove(product);
+        List<Product> list = shoppingCartDao.getByUserId(shoppingCart.getUserId())
+                .get().getProducts();
+        list.remove(product);
+        shoppingCart.setProducts(list);
+        shoppingCartDao.update(shoppingCart);
+        return true;
     }
 
     @Override
     public void clear(ShoppingCart shoppingCart) {
-        shoppingCartDao.getByUserId(shoppingCart.getUserId()).get().getProducts().clear();
+        List<Product> list = shoppingCartDao.getByUserId(shoppingCart.getUserId())
+                .get().getProducts();
+        list.clear();
+        shoppingCart.setProducts(list);
+        shoppingCartDao.update(shoppingCart);
     }
 
     @Override

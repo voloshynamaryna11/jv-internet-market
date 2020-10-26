@@ -8,7 +8,6 @@ import internet.market.model.User;
 import internet.market.service.ProductService;
 import internet.market.service.ShoppingCartService;
 import internet.market.service.UserService;
-import internet.market.util.HashUtil;
 import java.io.IOException;
 import java.util.Set;
 import javax.servlet.ServletException;
@@ -33,12 +32,10 @@ public class InjectDataController extends HttpServlet {
         productService.create(acousticGuitar);
         User user1 = new User("Monica Geller", "turkey222", "678gkjx");
         user1.setRoles(Set.of(Role.of("USER")));
-        user1.setSalt(HashUtil.getSalt());
         userService.create(user1);
         shoppingCartService.create(new ShoppingCart(user1.getId()));
         User user3 = new User("Admin", "admin", "1");
         user3.setRoles(Set.of(Role.of("ADMIN")));
-        user3.setSalt(HashUtil.getSalt());
         userService.create(user3);
         req.getRequestDispatcher("/WEB-INF/views/injectData.jsp").forward(req, resp);
     }

@@ -19,7 +19,8 @@ import java.util.Optional;
 public class ShoppingCartDaoJdbcImpl implements ShoppingCartDao {
     @Override
     public Optional<ShoppingCart> getByUserId(Long userId) {
-        String query = "SELECT * FROM shopping_carts WHERE user_id = ? AND deleted = false";
+        String query = "SELECT shopping_cart_id, user_id FROM shopping_carts "
+                + "WHERE user_id = ? AND deleted = false";
         ShoppingCart shoppingCart = null;
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -143,9 +144,10 @@ public class ShoppingCartDaoJdbcImpl implements ShoppingCartDao {
     }
 
     private List<Product> getProductsFromCart(Long id) {
-        String query = "SELECT product_id, name, price FROM products JOIN shopping_cart_products"
-                + "ON products.product_id = shopping_cart_products.product_id"
-                + " WHERE products.deleted = false AND shopping_cart_id = ?";
+        String query = "SELECT k.product_id, name, price FROM products AS k"
+                + " JOIN shopping_cart_products AS s "
+                + "ON k.product_id = s.product_id"
+                + " WHERE k.deleted = false AND shopping_cart_id = ?";
         List<Product> productList = new ArrayList<>();
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
