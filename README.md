@@ -41,13 +41,13 @@ to display dynamic data in it.
 ***5. Functionality:***
 -----------------------------------
 general capabilities:
-*registration ("/user/registration")
-*adding new product to the product-list ("/product/add")
-*watching all products' plethora("/product/all")
-*injecting start data to the db ("/injectData")
-*logout from the system ("/user/logout")
-*login ("/user/login")
-*watching the details of selected order ("/order/details")
+* registration ("/user/registration")
+* adding new product to the product-list ("/product/add")
+* watching all products' plethora("/product/all")
+* injecting start data to the db ("/injectData")
+* logout from the system ("/user/logout")
+* login ("/user/login")
+* watching the details of selected order ("/order/details")
 
 user capabilities:
 -watching the list of his selected products ("/cart/product/all") 
