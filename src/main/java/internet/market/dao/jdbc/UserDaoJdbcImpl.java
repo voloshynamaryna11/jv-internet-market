@@ -42,13 +42,15 @@ public class UserDaoJdbcImpl implements UserDao {
 
     @Override
     public User create(User item) {
-        String query = "INSERT INTO users(user_name, user_login, user_password) VALUES (?, ?, ?)";
+        String query = "INSERT INTO users(user_name, user_login, user_password, salt) "
+                + "VALUES (?, ?, ?, ?)";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query,
                     Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, item.getName());
             statement.setString(2, item.getLogin());
             statement.setString(3, item.getPassword());
+            statement.setBytes(4, item.getSalt());
             statement.executeUpdate();
             ResultSet resultSet = statement.getGeneratedKeys();
             if (resultSet.next()) {
@@ -105,14 +107,16 @@ public class UserDaoJdbcImpl implements UserDao {
 
     @Override
     public User update(User item) {
-        String query = "UPDATE users SET user_name = ?, user_login = ?, user_password = ? "
+        String query = "UPDATE users SET user_name = ?, user_login = ?, "
+                + "user_password = ?, salt = ? "
                 + "WHERE user_id = ? AND deleted = false";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, item.getName());
             statement.setString(2, item.getLogin());
             statement.setString(3, item.getPassword());
-            statement.setLong(4, item.getId());
+            statement.setBytes(4, item.getSalt());
+            statement.setLong(5, item.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new DataProcessingException("Can't update user with id = "
@@ -141,15 +145,18 @@ public class UserDaoJdbcImpl implements UserDao {
         String userName = resultSet.getString("user_name");
         String login = resultSet.getString("user_login");
         String password = resultSet.getString("user_password");
+        byte [] bytes = resultSet.getBytes("salt");
         User user = new User(userName, login, password);
         user.setId(userId);
+        user.setSalt(bytes);
         return user;
     }
 
     private Set<Role> getRolesOfUser(Long id) {
-        String query = "SELECT * FROM roles INNER JOIN users_roles "
-                + "ON roles.role_id = users_roles.role_id "
-                + "WHERE users_roles.user_id = ?";
+        String query = "SELECT k.role_id, role_name FROM roles AS k "
+                + "JOIN users_roles AS s "
+                + "ON k.role_id = s.role_id "
+                + "WHERE s.user_id = ?";
         Set<Role> userRoles = new HashSet<>();
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(query);

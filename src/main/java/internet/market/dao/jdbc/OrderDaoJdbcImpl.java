@@ -139,15 +139,16 @@ public class OrderDaoJdbcImpl implements OrderDao {
 
     private List<Product> getProductsOfOrder(Long orderId) {
         List<Product> products = new ArrayList<>();
-        String query = "SELECT * FROM products JOIN orders_products  "
-                + "ON products.product_id = orders_products.product_id"
-                + " WHERE orders_products.order_id = ?";
+        String query = "SELECT k.product_id, name, price FROM products AS k "
+                + "JOIN orders_products AS s "
+                + "ON k.product_id = s.product_id "
+                + "WHERE deleted = false AND s.order_id = ?";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setLong(1, orderId);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                Long productId = resultSet.getLong("id");
+                Long productId = resultSet.getLong("product_id");
                 String productName = resultSet.getString("name");
                 double productPrice = resultSet.getDouble("price");
                 Product product = new Product(productName, productPrice);

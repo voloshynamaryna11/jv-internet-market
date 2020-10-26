@@ -5,6 +5,7 @@ import internet.market.lib.Inject;
 import internet.market.lib.Service;
 import internet.market.model.User;
 import internet.market.service.UserService;
+import internet.market.util.HashUtil;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,6 +16,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User create(User user) {
+        byte [] salt = HashUtil.getSalt();
+        String saltedPassword = HashUtil.hashPassword(user.getPassword(), salt);
+        user.setPassword(saltedPassword);
+        user.setSalt(salt);
         return userDao.create(user);
     }
 
