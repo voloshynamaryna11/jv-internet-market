@@ -1,4 +1,4 @@
-**"jv-internet-market"** 
+**Internet-Market** 
 =====================
 
 ***1. Project goal***
@@ -23,26 +23,34 @@ jstl and java.security.
 
 ***3. Implementation details:***
 -----------------------------------
-The project implements authorization, authentication, hashing passwords using the SHA-512 algorithm, dividing user roles into buyers and administrators, 
-and corresponding functionality for each role (using filters). MySQL was used as a database, com.mysql.cj.jdbc.Driver - driver to connect to it. 
-The protocol for transferring data between the client and the server are http, so all controllers extend the functionality of HttpServlet. 
-Apache Tomcat 9.0.37 was used as a web server and servlet container (2 in 1). The code was organized in such a way as to comply with the SOLID principles and,
-accordingly, for the implementation of Dependency Inversion, we created our own annotations and a custom injector, which, using reflection, 
-supported the work of Dependency Injection. And for convenient display of information on the client side, the jsp template engine and the jstl library were used
-to display dynamic data in it.
+The project implements:
+* authorization
+* authentication,
+* hashing passwords using the SHA-512 algorithm,
+* dividing user roles into buyers and administrators 
+* corresponding functionality for each role (using filters)
+* As a database was used MySQL
+* Driver to connect to database - com.mysql.cj.jdbc.Driver 
+* The protocol for transferring data between the client and the server are http, so all controllers extend the functionality of HttpServlet. 
+* Apache Tomcat 9.0.37 was used as a web server and servlet container (2 in 1)
+* The code was organized in such a way as to comply with the SOLID principles
+* For the implementation of Dependency Inversion, I created own annotations and a custom injector, which, using reflection, 
+ supported the work of Dependency Injection. 
+* And for convenient display of information on the client side, the jsp template engine and the jstl library were used 
+ to display dynamic data in it.
 
 ***4. Launch guide:***
 -----------------------------------
 * Clone this project 
 * Install and configure apache Tomcat and MySQL(or another rdbms) 
 * Fix the information about connection to database in "util" package "ConnectionUtil" class(user, password and driver if you use another database)
-* Run code in init_db.sql to create the needed tables and schema 
+* Run code in init_db.sql(resources package) to create the needed tables and schema 
+* After injecting data to the database over server client you can try admin functions. Use login: "admin" and password: "1" 
 
 ***5. Functionality:***
 -----------------------------------
 general capabilities:
 * registration ("/user/registration")
-* adding new product to the product-list ("/product/add")
 * watching all products' plethora("/product/all")
 * injecting start data to the db ("/injectData")
 * logout from the system ("/user/logout")
@@ -58,6 +66,7 @@ user capabilities:
 
 admin capabilities:
 * watching all users list ("/user/all")
+* adding new product to the product-list ("/product/add")
 * deleting users ("/user/delete")
 * watching the list of all users' orders ("/admin/orders")
 * deleting orders from the previous list ("/admin/orders/delete")
